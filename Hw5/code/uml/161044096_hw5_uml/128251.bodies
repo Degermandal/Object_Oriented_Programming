@@ -1,0 +1,63 @@
+class Shape
+!!!142203.cpp!!!	Shape()
+	//noparameter constructor
+!!!142331.cpp!!!	Shape(in xx : double, in yy : double)
+	if(xx>= 0)
+		x = xx;
+	else
+	{
+		throw Exception("Shape Fail -Shape const x degeri-!!");
+	}
+
+	if(yy>=0)
+		y = yy;
+	else
+	{
+		throw Exception("Shape Fail -Shape const y degeri-!!");
+	}
+!!!142715.cpp!!!	setShapeX(in xx : double) : void
+	if(xx>= 0)
+		x = xx;
+	else
+	{
+		throw Exception("Shape Fail -Shape setX-!!");
+	}
+!!!142843.cpp!!!	setShapeY(in yy : double) : void
+	if(yy>=0)
+		y = yy;
+	else
+		throw Exception("Shape Fail -Shape setY-!!");
+!!!143227.cpp!!!	operator ++() : Shape
+	++x;
+	++y;
+	return *this;
+!!!143355.cpp!!!	operator --() : Shape
+	--x;
+	--y;
+	return *this;
+!!!143483.cpp!!!	operator ++(in  : int) : Shape
+    Shape &ss = *this;
+	x++;
+	y++;
+	return ss;
+
+	//cout<<"Shape post increment\n";
+!!!143611.cpp!!!	operator --(in  : int) : Shape
+	Shape &ss = *this;
+	x--;
+	y--;
+	return ss;
+	//cout<<"Shape post decrement\n";
+!!!143739.cpp!!!	operator ==(in s : Shape) : bool
+	cout<<"shape ==\n";
+	return (this->Area() == s.Area());
+!!!143867.cpp!!!	operator !=(in s : Shape) : bool
+	return (!(this->Area() == s.Area()));
+!!!143995.cpp!!!	operator >(in s : Shape) : bool
+	return (this->Area() > s.Area());
+!!!144123.cpp!!!	operator <(in s : Shape) : bool
+	return (this->Area() < s.Area());
+!!!144251.cpp!!!	operator >=(in s : Shape) : bool
+	return (this->Area() >= s.Area());
+!!!144379.cpp!!!	operator <=(in s : Shape) : bool
+	return (this->Area() <= s.Area());

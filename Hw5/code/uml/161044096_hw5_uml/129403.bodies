@@ -1,0 +1,63 @@
+class PolygonVect
+!!!138107.cpp!!!	PolygonVect()
+	vec2D.push_back(new Polygon::Point2D(0, 0));
+	vec2D.push_back(new Polygon::Point2D(100, 50));
+	vec2D.push_back(new Polygon::Point2D(50, 100));
+!!!138235.cpp!!!	PolygonVect(inout v2d : Polygon::Point2D)
+	vec2D.push_back(&v2d);
+!!!138363.cpp!!!	PolygonVect(inout s : Shape)
+	if(const Circle* ptr = dynamic_cast< const Circle*>(s))
+	{
+		Point2D a2d(ptr->getShapeX(), ptr->getShapeY());	
+		vec2D.push_back(&a2d);
+	}
+	else if(const Rectangle* ptr = dynamic_cast< const Rectangle*>(s))
+	{
+		Point2D b2d(ptr->getShapeX(), ptr->getShapeY());	
+		vec2D.push_back(&b2d);	
+	}
+	else if(const Triangle* ptr = dynamic_cast< const Triangle*>(s))
+	{
+		Point2D c2d(ptr->getShapeX(), ptr->getShapeY());	
+		Point2D d2d(ptr->getX2(), ptr->getY2());	
+		Point2D f2d(ptr->getX3(), ptr->getY3());	
+
+		vec2D.push_back(&c2d);
+		vec2D.push_back(&d2d);
+		vec2D.push_back(&f2d);	
+	}
+	else
+		throw Exception("PolygonVect Fail -PolygonVect(Shape *s)-!!\n");
+!!!138747.cpp!!!	operator ==(in pv : Shape) : bool
+try{
+	if(const PolygonVect* ptr = dynamic_cast<const PolygonVect*> (&pv))
+		return(this->vec2D == ptr->vec2D);
+	
+	return false;
+}
+catch(exception  &e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!138875.cpp!!!	operator !=(in pv : Shape) : bool
+try{
+	if(const PolygonVect* ptr = dynamic_cast<const PolygonVect*> (&pv))
+		return(this->vec2D != ptr->vec2D);
+	
+	return false;
+}
+catch(exception &e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!139003.cpp!!!	getVec() : vector<Polygon::Point2D*>
+	vector<Point2D *> ar;
+
+	for(int i = 0; i<vec2D.size(); i++)
+	{
+		ar[i] = vec2D[i];
+
+	}
+	return ar;

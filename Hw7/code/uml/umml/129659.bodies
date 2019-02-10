@@ -1,0 +1,28 @@
+class staticSeperate
+!!!144123.java!!!	drawAll(inout ss : Shape [[]], inout g : Graphics) : void
+    for (Shape s : ss) 
+    {
+        s.draw(g);
+    }
+!!!144251.java!!!	convertAll(inout arr : Shape [[]]) : Shape
+    Polygon[] temp = new Polygon[arr.length];
+    for(int i = 0; i<arr.length; i++)
+    {
+       temp[i] =  (Polygon)arr[i] ;
+    }
+    
+    return temp;
+!!!144379.java!!!	sortShapes(inout arr : Shape [[]]) : void
+    int i , j,min;
+    int n = arr.length;
+    for(i = 0; i<n-1; ++i)
+    {
+            min = i;
+            for(j = i+1; j<n; j++)
+                    if(arr[j].area() < arr[min].area())
+                            min = j;
+
+            Shape temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+    }

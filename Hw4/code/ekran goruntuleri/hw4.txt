@@ -1,0 +1,113 @@
+g++ 161044096_main.o Rectangle.o Triangle.o Circle.o ComposedShape.o Polygon.o Polyline.o -o exe
+./exe
+BEFORE OPERATORS
+
+RECTANGLE
+
+1. shape Height: 500    Width: 600     X: 0     Y: 0
+1. shape Perimeter: 2200    Area: 300000     StaticArea: 7.8e+06    StaticPerimeter: 57200
+
+2. shape Height: 200    Width: 500     X: 0     Y: 0
+2. shape Perimeter: 1400    Area: 100000     StaticArea: 1.04e+07    StaticPerimeter: 93600
+
+3. shape Height: 25    Width: 40     X: 0     Y: 0
+3. shape Perimeter: 130    Area: 1000     StaticArea: 1.0426e+07    StaticPerimeter: 96980
+
+4. shape Height: 20    Width: 40     X: 0     Y: 0
+4. shape Perimeter: 120    Area: 800     StaticArea: 1.04468e+07    StaticPerimeter: 100100
+
+############################################################################################
+CIRCLE
+
+1. shape Radius: 350    X: 350    Y: 350
+1. shape Perimeter: 2199.05    Area: 384834     StaticArea: 1.00057e+07     StaticPerimeter: 57175.3
+
+2. shape Radius: 500    X: 500    Y: 500
+2. shape Perimeter: 3141.5    Area: 785375     StaticArea: 3.04254e+07     StaticPerimeter: 138854
+
+3. shape Radius: 20    X: 20    Y: 20
+3. shape Perimeter: 125.66    Area: 1256.6     StaticArea: 3.04581e+07     StaticPerimeter: 142121
+
+4. shape Radius: 38    X: 38    Y: 38
+4. shape Perimeter: 238.754    Area: 4536.33     StaticArea: 3.0576e+07     StaticPerimeter: 148329
+
+############################################################################################
+TRIANGLE
+
+1. shape Edge: 500;   COORDINATES x1: 250,    y1: 0,    x2: 0,   y2: 433.013,   x3: 500,    y3: 433.013
+1. shape Perimeter: 1500 Area: 108253 StaticArea: 2.81458e+06 StaticPerimeter: 39000
+
+2. shape Edge: 300;   COORDINATES x1: 150,    y1: 0,    x2: 0,   y2: 259.808,   x3: 300,    y3: 259.808
+2. shape Perimeter: 900 Area: 38971.1 StaticArea: 3.82783e+06 StaticPerimeter: 62400
+
+3. shape Edge: 35;   COORDINATES x1: 17.5,    y1: 0,    x2: 0,   y2: 30.3109,   x3: 35,    y3: 30.3109
+3. shape Perimeter: 105 Area: 530.441 StaticArea: 3.84162e+06 StaticPerimeter: 65130
+
+4. shape Edge: 19;   COORDINATES x1: 9.5,    y1: 0,    x2: 0,   y2: 16.4545,   x3: 19,    y3: 16.4545
+4. shape Perimeter: 57 Area: 156.318 StaticArea: 3.84569e+06 StaticPerimeter: 66612
+
+############################################################################################
+COMPARE OPERATORS:  
+
+RECTANGLE::
+Two objects are not equal
+The First object is bigger than second object
+The First object is bigger than or equal to the second object
+TRIANGLE::
+Two objects are not equal
+The First object is bigger than second object
+The First object is bigger than or equal to the second object
+CIRCLE::
+Two objects are not equal
+The Second object is bigger than the first object
+The second object is bigger than or equal to the first object
+############################################################################################
+OTHER OPERATORS:  
+
+AFTER OPERATORS
+
+RECTANGLE
+
+1. shape Height: 500     Width: 600     X: 0    Y: 0
+1. shape Perimeter: 2200    Area: 300000   StaticArea: 2.30468e+07    StaticPerimeter: 192500
+
+2. shape Height: 200     Width: 500     X: 0    Y: 0
+2. shape Perimeter: 1400    Area: 100000   StaticArea: 2.72468e+07    StaticPerimeter: 251300
+
+3. shape Height: 25     Width: 40     X: 0    Y: 0
+3. shape Perimeter: 130    Area: 1000   StaticArea: 2.72888e+07    StaticPerimeter: 256760
+
+4. shape Height: 20     Width: 40     X: 0    Y: 0
+4. shape Perimeter: 120    Area: 800   StaticArea: 2.73224e+07    StaticPerimeter: 261800
+
+############################################################################################
+CIRCLE
+
+1. shape Radius: 350    X: 350    Y: 350
+1. shape Perimeter: 2199.05   Area: 384834    StaticArea: 4.67391e+07    StaticPerimeter: 240689
+
+2. shape Radius: 500    X: 500    Y: 500
+2. shape Perimeter: 3141.5   Area: 785375    StaticArea: 7.97248e+07    StaticPerimeter: 372632
+
+3. shape Radius: 20    X: 20    Y: 20
+3. shape Perimeter: 125.66   Area: 1256.6    StaticArea: 7.97776e+07    StaticPerimeter: 377910
+
+4. shape Radius: 38    X: 38    Y: 38
+4. shape Perimeter: 238.754   Area: 4536.33    StaticArea: 7.99681e+07    StaticPerimeter: 387938
+
+############################################################################################
+TRIANGLE
+
+1. shape Edge: 500;    COORDINATES x1: 250,    y1: 0,    x2: 0,    y2: 433.013,    x3: 500,    y3: 433.013
+1. shape Perimeter: 1500    Area: 108253    StaticArea: 8.39232e+06    StaticPerimeter: 129612
+
+2. shape Edge: 300;    COORDINATES x1: 150,    y1: 0,    x2: 0,    y2: 259.808,    x3: 300,    y3: 259.808
+2. shape Perimeter: 900    Area: 38971.1    StaticArea: 1.00291e+07    StaticPerimeter: 167412
+
+3. shape Edge: 35;    COORDINATES x1: 17.5,    y1: 0,    x2: 0,    y2: 30.3109,    x3: 35,    y3: 30.3109
+3. shape Perimeter: 105    Area: 530.441    StaticArea: 1.00514e+07    StaticPerimeter: 171822
+
+4. shape Edge: 19;    COORDINATES x1: 9.5,    y1: 0,    x2: 0,    y2: 16.4545,    x3: 19,    y3: 16.4545
+4. shape Perimeter: 57    Area: 156.318    StaticArea: 1.0058e+07    StaticPerimeter: 174216
+
+makefile:4: recipe for target 'begin' failed

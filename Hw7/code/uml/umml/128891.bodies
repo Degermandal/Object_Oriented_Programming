@@ -1,0 +1,65 @@
+class Rectangle
+!!!141947.java!!!	Rectangle(in width : int, in height : int, in x : int, in y : int)
+                this.width = width;
+                this.height = height;
+                this.x = x;
+                this.y = y;
+!!!142075.java!!!	Rectangle(in width : int, in height : int)
+                this(width, height, 0, 0);
+!!!142203.java!!!	Rectangle()
+                this(80, 40, 0, 0);
+!!!142331.java!!!	getWidth() : int
+                return width;
+!!!142459.java!!!	getHeight() : int
+                return height;
+!!!142587.java!!!	getX() : int
+                return x;
+!!!142715.java!!!	getY() : int
+                return y;
+!!!142843.java!!!	setWidth(in w : int) : void
+                if(w > 0.0) 
+                        width = w;
+                else
+                        throw new Exception("Yanlis width parameter\n");
+!!!142971.java!!!	setHeight(in h : int) : void
+                if(h > 0.0) 
+                        height = h;
+                else
+                        throw new Exception("Yanlis height parameter\n");
+!!!143099.java!!!	setX(in x : int) : void
+                this.x = x;
+!!!143227.java!!!	setY(in y : int) : void
+                this.y = y;
+!!!143355.java!!!	area() : double
+                       return height*width;
+!!!143483.java!!!	perimeter() : double
+                       return 2*height + 2*width;
+!!!143611.java!!!	increment() : void
+                       this.x = x + 1;
+                       this.y = y + 1;
+           
+!!!143739.java!!!	decrement() : void
+                       this.x = x - 1;
+                       this.y = y - 1;
+!!!143867.java!!!	compareTo(inout sh : Shape) : int
+                       if(area() == sh.area())
+                           return 0;
+                       else if(area() < sh.area())
+                           return 1;
+                       else
+                           return -1;               
+!!!143995.java!!!	draw(inout g : Graphics) : void
+            /*
+            System.out.println("welcome3");
+            setBackground(Color.white);
+            super.paintComponent(g);
+            
+            if(smallOrBig == 'b')
+                g.setColor(Color.green);
+            else if(smallOrBig == 's')
+                g.setColor(Color.red);
+            else// 's' degilken 
+                System.out.println("smallOrBig seciminde hata");
+            */
+            g.fillRect(x, y, width, height);       
+                        

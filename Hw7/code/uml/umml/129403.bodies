@@ -1,0 +1,128 @@
+class PolygonDyn
+!!!137723.java!!!	getDyn2D(in index : int) : Polygon::Point2D
+        return dyn2D[index];
+!!!137851.java!!!	getCap() : int
+        return cap;
+!!!137979.java!!!	setCap(in cap : int) : void
+        this.cap = cap;
+!!!138107.java!!!	getUse() : int
+        return use;
+!!!138235.java!!!	setUse(in use : int) : void
+        this.use = use;
+!!!138363.java!!!	PolygonDyn(inout rr : Rectangle)
+        Point2D pp = new Point2D(rr.getX(), rr.getY());
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(rr.getX()+ rr.getWidth(), rr.getY());
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(rr.getX()+ rr.getWidth(), rr.getY()+rr.getHeight());
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(rr.getX(), rr.getY()+rr.getHeight());
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        
+        _perimeter = rr.perimeter();
+        _area = rr.area();
+!!!138491.java!!!	PolygonDyn(inout tt : Triangle)
+        Point2D pp = new Point2D(tt.getX(), tt.getY());
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(tt.getxArr(0), tt.getyArr(0));
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(tt.getxArr(1), tt.getyArr(1));
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        pp = new Point2D(tt.getxArr(2), tt.getyArr(2));
+        if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+        
+        _perimeter = tt.perimeter();
+        _area = tt.area();
+!!!138619.java!!!	PolygonDyn(inout cc : Circle)
+    double angle;
+    cap = 100;
+    dyn2D = new Point2D[100];
+
+    for(int i = 0; i<100; ++i)
+    {
+            angle = i*(3.6)* Math.PI / 180;
+            Point2D pp = new Point2D(cc.getX() + (int)(cc.getRadius() * Math.cos(angle)), cc.getY() + (int)( cc.getRadius() * Math.sin(angle)));
+            if (use >= cap)
+             throw new Exception("yeterli yer yok\n");
+        dyn2D[use++] = pp;
+    }
+    _perimeter = cc.perimeter();
+    _area = cc.area();
+!!!138747.java!!!	getAr() : Polygon::Point2D
+	
+    Point2D[] ar = new Point2D[getCap()];
+    System.arraycopy(dyn2D, 0, ar, 0, dyn2D.length);
+           //ar[i] = dyn2D[i];
+    
+    return ar;
+!!!138875.java!!!	PolygonDyn(in xx : int, in yy : int)
+     cap = 50;
+     dyn2D = new Point2D[cap];
+     dyn2D[use] = new Point2D(xx, yy);
+     use++;
+!!!139003.java!!!	PolygonDyn(inout p2d : Polygon::Point2D)
+     cap = 50;
+     dyn2D = new Point2D[cap];
+     dyn2D[use] = p2d;
+     use++;
+!!!139131.java!!!	PolygonDyn(inout p2d : Polygon::Point2D, inout pp2d : Polygon::Point2D, inout ppp2d : Polygon::Point2D)
+    cap = 50;
+    dyn2D = new Point2D[cap];
+    dyn2D[use] = p2d;
+    use++;
+    dyn2D[use] = pp2d;
+    use++;
+    dyn2D[use] = ppp2d;
+    use++;
+!!!139259.java!!!	PolygonDyn()
+    cap = 100;
+    use = 0;
+    dyn2D = new Point2D[cap];
+    use++;
+!!!139387.java!!!	PolygonDyn(in cap : int)
+    this.cap = cap;
+    use = 0;
+    dyn2D = new Point2D[cap];
+    use++;
+!!!139515.java!!!	area() : double
+        System.out.println("PolyDyn area");
+       return _area;
+!!!139643.java!!!	perimeter() : double
+       System.out.println("PolyDyn perimeter");
+       return _perimeter;
+!!!139771.java!!!	increment() : void
+        System.out.println("PolyDyn increment function");
+       
+!!!139899.java!!!	decrement() : void
+        System.out.println("PolyDyn decrement function");
+      
+!!!140027.java!!!	compareTo(inout sh : Shape) : int
+                       if(area() == sh.area())
+                           return 0;
+                       else if(area() < sh.area())
+                           return 1;
+                       else
+                           return -1;
+                
+!!!140155.java!!!	draw(inout g : Graphics) : void
+           super.paintComponent(g);
+
+           g.setColor(Color.green);
+            
+            g.drawLine((int)dyn2D[0].getPoint2dX(), (int)dyn2D[0].getPoint2dY(), (int)dyn2D[1].getPoint2dX(), (int)dyn2D[1].getPoint2dY());

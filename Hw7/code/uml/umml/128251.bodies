@@ -1,0 +1,61 @@
+class Circle
+!!!129275.java!!!	Circle(in radius : int, in x : int, in y : int)
+                this.radius = radius;
+                this.x = x;
+                this.y = y;
+!!!129403.java!!!	Circle(in radius : int)
+               // this.radius = radius;
+                this(radius, 0, 0);
+!!!129531.java!!!	Circle(in x : int, in y : int)
+                this.x = x;
+                this.y = y;
+!!!129659.java!!!	Circle()
+                this(80, 0, 0);
+!!!129787.java!!!	getRadius() : int
+                return radius;
+!!!129915.java!!!	getX() : int
+                return x;
+!!!130043.java!!!	getY() : int
+                return y;
+!!!130171.java!!!	setRadius(in r : int) : void
+                if(r <= 0)
+                    throw new Exception("Yanlis radius input\n");
+                else
+                        this.radius = r;
+!!!130299.java!!!	setX(in x : int) : void
+                this.x = x;
+!!!130427.java!!!	setY(in y : int) : void
+                this.y = y;
+!!!130555.java!!!	area() : double
+                       return Math.PI*radius*radius;
+!!!130683.java!!!	perimeter() : double
+                       return 2*Math.PI*radius;
+!!!130811.java!!!	increment() : void
+                       this.x = x + 1;
+                       this.y = y + 1;
+
+!!!130939.java!!!	decrement() : void
+                       this.x = x - 1;
+                       this.y = y - 1;
+!!!131067.java!!!	compareTo(inout sh : Shape) : int
+                       if(area() == sh.area())
+                           return 0;
+                       else if(area() < sh.area())
+                           return 1;
+                       else
+                           return -1;
+
+!!!131195.java!!!	draw(inout g : Graphics) : void
+        /*
+            setBackground(Color.white);
+            super.paintComponent(g);
+
+             if(smallOrBig == 'b')
+                g.setColor(Color.green);
+            else if(smallOrBig == 's')
+                g.setColor(Color.red);
+            else// 's' degilken 
+                System.out.println("smallOrBig seciminde hata");
+          */  
+            g.fillOval(x, y, radius, radius);
+

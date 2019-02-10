@@ -1,0 +1,90 @@
+class Rectangle
+!!!139899.cpp!!!	setHeight(in h : int) : void
+	if(h > 0.0) 
+		height = h;
+	else
+		cout<<"Incorrect height input\n";
+!!!140027.cpp!!!	setWidth(in w : int) : void
+	if(w > 0.0)
+		width = w;
+	else
+		cout<<"Incorrect width input\n";
+!!!140155.cpp!!!	Perimeter() : double
+	return 2*height + 2*width;
+!!!140283.cpp!!!	Area() : double
+	return height*width;
+!!!140411.cpp!!!	operator ++() : Rectangle
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+
+	return *this;
+!!!140539.cpp!!!	operator --() : Rectangle
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+
+	return *this;
+!!!140667.cpp!!!	operator ++(in  : int) : Rectangle
+	Rectangle &rr = *this;
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+	
+	return rr;
+!!!140795.cpp!!!	operator --(in  : int) : Rectangle
+	Rectangle &rr = *this;
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+	return rr;
+!!!140923.cpp!!!	operator +(in plusSize : double) : Rectangle
+	return Rectangle(height + plusSize, width + plusSize);
+!!!141051.cpp!!!	operator -(in minusSize : double) : Rectangle
+	return Rectangle(height - minusSize, width - minusSize);
+!!!141179.cpp!!!	operator ==(in r : Shape) : bool
+try{
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() == ptr->Area());
+	
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!141307.cpp!!!	operator !=(in r : Shape) : bool
+try{
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() != ptr->Area());
+	
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!141435.cpp!!!	operator >(in r : Shape) : bool
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() > ptr->Area());
+	
+	return false;
+!!!141563.cpp!!!	operator <(in r : Shape) : bool
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() < ptr->Area());
+	
+	return false;
+!!!141691.cpp!!!	operator >=(in r : Shape) : bool
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() >= ptr->Area());
+	
+	return false;
+!!!141819.cpp!!!	operator <=(in r : Shape) : bool
+	if(const Rectangle* ptr = dynamic_cast<const Rectangle*> (&r))
+		return(this->Area() <= ptr->Area());
+	
+	return false;
+!!!141947.cpp!!!	staticRecArea(in r1 : Rectangle) : double
+	totalArea += areaCounter * r1.Area();
+	return totalArea;
+!!!142075.cpp!!!	staticRecPerimeter(in r1 : Rectangle) : double
+	totalPerimeter += perimeterCounter * r1.Perimeter();
+	return totalPerimeter;

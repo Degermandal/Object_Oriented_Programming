@@ -1,0 +1,72 @@
+class Triangle
+!!!144507.java!!!	Triangle()
+ 
+                        this.edge = 300;
+                        xArr = new int[] {edge/2, 0, edge};
+                        yArr = new int[] {0, (int)((edge/2)*sqrt(3)), (int) ((edge/2)*Math.sqrt(3.0))};
+!!!144635.java!!!	Triangle(in e : int, in x1 : int, in y1 : int, in x2 : int, in y2 : int, in x3 : int, in y3 : int)
+ 
+                    this.edge = e;
+                    xArr = new int[] {x1, x2, x3};
+                    yArr = new int[] {y1, y2, y3};
+!!!144763.java!!!	Triangle(in e : int)
+ 
+                    this.edge = e;
+                    xArr = new int[] {edge/2, 0, edge};
+                    yArr = new int[] {0, (int)((edge/2)*sqrt(3)), (int)( (edge/2)*sqrt(3))};
+!!!144891.java!!!	Triangle(in x1 : int, in y1 : int, in x2 : int, in y2 : int, in x3 : int, in y3 : int)
+ 
+                    this.edge = 300;
+                    xArr = new int[] {x1, x2, x3};
+                    yArr = new int[] {y1, y2, y3};
+!!!145019.java!!!	getxArr(in index : int) : int
+                return xArr[index];
+!!!145147.java!!!	getyArr(in index : int) : int
+                return yArr[index];
+!!!145275.java!!!	getEdge() : int
+                return edge;
+!!!145403.java!!!	setEdge(in e : int) : void
+                if(e > 0.0) 
+                        edge = e;
+                else
+                        throw new Exception("Yanlis edge parameter\n");
+!!!145531.java!!!	area() : double
+                       return (edge*edge*Math.sqrt(3)) / 4;
+!!!145659.java!!!	perimeter() : double
+                       return 3*edge;
+!!!145787.java!!!	increment() : void
+                    for(int i = 0; i < xArr.length; i++)
+                    {
+                            this.xArr[i] = xArr[i] + 1;
+                            this.yArr[i] = yArr[i] + 1;
+                    }       
+           
+!!!145915.java!!!	decrement() : void
+                    for(int i = 0; i < xArr.length; i++)
+                    {
+                            this.xArr[i] = xArr[i] - 1;
+                            this.yArr[i] = yArr[i] - 1;
+                    }     
+!!!146043.java!!!	compareTo(inout sh : Shape) : int
+                       if(area() == sh.area())
+                           return 0;
+                       else if(area() < sh.area())
+                           return 1;
+                       else
+                           return -1;
+                
+!!!146171.java!!!	draw(inout g : Graphics) : void
+            /*
+            setBackground(Color.white);
+            super.paintComponent(g);
+            
+             if(smallOrBig == 'b')
+                g.setColor(Color.green);
+            else if(smallOrBig == 's')
+                g.setColor(Color.red);
+            else 
+                System.out.println("smallOrBig seciminde hata");
+            */
+            g.fillPolygon(xArr, yArr, edge);       
+            // System.out.println("gshjd   " + xArr[0] + "    y   "+ yArr[0]);
+                        

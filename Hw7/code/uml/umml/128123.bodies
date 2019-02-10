@@ -1,0 +1,157 @@
+class AnaEkran
+!!!128123.java!!!	main(inout args : String [[]]) : void
+            EventQueue.invokeLater(() -> {
+                try {
+                    AnaEkran window = new AnaEkran();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+!!!128251.java!!!	AnaEkran()
+            initialize();
+!!!128379.java!!!	initialize() : void
+            //Create a frame to contain all other GUI elements
+            frame = new JFrame();
+            frame.setBounds(100, 100, 600, 400);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().setLayout(null);
+
+            //Create a panel for drawing shapes, you can think this as canvas
+            JPanel panel = new JPanel();
+            panel.setBackground(Color.LIGHT_GRAY);
+            panel.setBounds(10, 11, 414, 250);
+            frame.getContentPane().add(panel); // panel reference copied
+
+            //Label above combo box, just immutable plain text
+            JLabel containerShapeLabel = new JLabel("myContainer");
+            containerShapeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            containerShapeLabel.setBounds(10, 270, 99, 20);
+            frame.getContentPane().add(containerShapeLabel);
+            //Label above combo box, just immutable plain text
+            JLabel lblInnerShape = new JLabel("myInnerContainer");
+            lblInnerShape.setHorizontalAlignment(SwingConstants.CENTER);
+            lblInnerShape.setBounds(120, 270, 100, 20);
+            frame.getContentPane().add(lblInnerShape);
+
+            // Combo box for selecting container shape
+            JComboBox<String> cbContainerShape = new JComboBox<String>();
+            cbContainerShape.setSelectedIndex(-1);
+            cbContainerShape.setMaximumRowCount(3);
+            cbContainerShape.setBounds(10, 300, 100, 25);
+            cbContainerShape.addItem("Rectangle"); // Choice 1
+            cbContainerShape.addItem("Triangle");  // Choice 2
+            cbContainerShape.addItem("Circle");    // Choice 3
+            frame.getContentPane().add(cbContainerShape);  // reference copied
+
+            // Combo box for selecting inner shape
+            JComboBox<String> cbInnerShape = new JComboBox<String>();
+            cbInnerShape.setSelectedIndex(-1);
+            cbInnerShape.setMaximumRowCount(3);
+            cbInnerShape.setBounds(120, 300, 100, 25);
+            cbInnerShape.addItem("Rectangle");
+            cbInnerShape.addItem("Triangle");
+            cbInnerShape.addItem("Circle");
+            frame.getContentPane().add(cbInnerShape); // reference copied
+
+            // A button that will clear our panel (canvas) when clicked
+            // This can be done using callback function mouseClicked
+            // The GUI engine will execute mouseClicked function when
+            // the user clicks our clear button.
+            JButton btnClear = new JButton("Clear");
+            btnClear.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                            // Clear panel by filling white :)
+                            // The Graphics reference is used to draw shapes.
+                            // When we call panel.getGraphics(), we reach the brush and palette
+                            // to design our paint that will be painted on the panel(canvas). 
+                            // After we design our paint,
+                            // we need to call the paintComponents method, which will
+                            // ACTUALLY paint the panel with the design that we made.
+                            Graphics g = panel.getGraphics(); // get brush
+                            g.setColor(Color.WHITE); // from now on, use white color
+                            g.fillRect(0, 0, panel.getWidth(), panel.getHeight()); 
+                            panel.paintComponents(g); // the panel will change when THIS function is executed
+                    }
+            });
+
+            btnClear.setBounds(349, 227, 75, 23);
+            frame.getContentPane().add(btnClear); // button reference copied
+
+            // A button that will draw our shapes to panel (canvas) when clicked
+            // This can be done using callback function mouseClicked (same as above)
+            JButton btnDraw = new JButton("Draw");
+            btnDraw.addMouseListener(new MouseAdapter() {
+                
+                
+                    @Override
+                    public void mouseClicked(MouseEvent arg0) {
+
+                            // Print currently selected items of combo boxes
+                            System.out.println(cbContainerShape.getSelectedItem());
+                            System.out.println(cbInnerShape.getSelectedItem());
+                            
+                         //rectangle icin manual deger atadim
+                        Rectangle mobjR1 = new Rectangle(300, 350, 0, 0);
+                        Rectangle mobjR2 = new Rectangle(300, 400, 0, 0);
+                        Rectangle sobjR1 = new Rectangle(20, 30);
+                        Rectangle sobjR2 = new Rectangle(20, 40);
+
+                        //circle icin manual deger atadim
+                        Circle mobjC1 = new Circle(100, 100, 100);
+                        Circle mobjC2 = new Circle(300, 300, 300);
+                        Circle sobjC1 = new Circle(20);
+                        Circle sobjC2 = new Circle(38);
+
+                        //triangle icin manual deger atadim
+                        Triangle mobjT1 = new Triangle(400);
+                        Triangle mobjT2 = new Triangle(300);
+                        Triangle sobjT1 = new Triangle(30);
+                        Triangle sobjT2 = new Triangle(40);
+
+
+                       // ComposedShape CSobj1 = new ComposedShape(mobjR1, sobjR1);//R-R
+                        //ComposedShape CSobj2 = new ComposedShape(mobjR2, sobjT1);//R-T
+                        ComposedShape CSobj3 = new ComposedShape(mobjR1, sobjC1);//R-C
+                        //ComposedShape CSobj4 = new ComposedShape(mobjT1, sobjR1);//T-R
+                       // ComposedShape CSobj5 = new ComposedShape(mobjT1, sobjT2);//T-T
+                        //ComposedShape CSobj6 = new ComposedShape(mobjT1, sobjC1);//T-C
+                        //ComposedShape CSobj7 = new ComposedShape(mobjC1, sobjR1);//C-R
+                        //ComposedShape CSobj8 = new ComposedShape(mobjC2, sobjT2);//C-T
+                        // ComposedShape CSobj9 = new ComposedShape(mobjC1, sobjC1);//C-C
+                        
+                        
+                        try {
+                                    //CSobj1.optimalFit();
+                                    //CSobj2.optimalFit();
+                                    CSobj3.optimalFit();
+                                   // CSobj4.optimalFit();
+                                    //CSobj5.optimalFit();
+                                   //CSobj6.optimalFit();
+                                   //CSobj7.optimalFit();
+                                   // CSobj8.optimalFit();
+                                   // CSobj9.optimalFit();
+                            } catch (Exception ex) {
+                                Logger.getLogger(AnaEkran.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        
+                        Graphics g = panel.getGraphics();
+
+                        //CSobj1.draw(g);
+                        //CSobj2.draw(g);
+                        CSobj3.draw(g);
+                        //CSobj4.draw(g);
+                        //CSobj5.draw(g);
+                        //CSobj6.draw(g);
+                        //CSobj7.draw(g);
+                        //CSobj8.draw(g);
+                       // CSobj9.draw(g);
+
+                            // Now paint component with the graphics
+                            panel.paintComponents(g);
+                    }
+            });
+            btnDraw.setBounds(264, 227, 75, 23);
+            frame.getContentPane().add(btnDraw); // button reference copied
+

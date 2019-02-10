@@ -1,0 +1,87 @@
+class Circle
+!!!128763.cpp!!!	setRadius(in r : double) : void
+	if(r > 0.0)
+		radius = r;
+	else
+		cout<<"Incorrect radius input\n";
+!!!128891.cpp!!!	Perimeter() : double
+	return 2*PI*radius;
+!!!129019.cpp!!!	Area() : double
+	return PI*radius*radius;
+!!!129147.cpp!!!	operator ++() : Circle
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+
+	return *this;
+!!!129275.cpp!!!	operator --() : Circle
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+
+	return *this;
+!!!129403.cpp!!!	operator ++(in  : int) : Circle
+	cout<<"circle ++\n";
+	Circle &cc = *this;
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+	
+	return cc;
+!!!129531.cpp!!!	operator --(in  : int) : Circle
+	Circle &rr = *this;
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+	
+	return rr;
+!!!129659.cpp!!!	operator +(in plusSize : double) : Circle
+	return Circle(radius + plusSize);
+!!!129787.cpp!!!	operator -(in minusSize : double) : Circle
+	return Circle(radius - minusSize);
+!!!129915.cpp!!!	operator ==(in c : Shape) : bool
+try{
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() == ptr->Area());
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!130043.cpp!!!	operator !=(in c : Shape) : bool
+try{ ////BAD_CAST exception durumu
+
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() != ptr->Area());
+
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!130171.cpp!!!	operator >(in c : Shape) : bool
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() > ptr->Area());
+
+	return false;
+!!!130299.cpp!!!	operator <(in c : Shape) : bool
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() < ptr->Area());
+
+	return false;
+!!!130427.cpp!!!	operator >=(in c : Shape) : bool
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() >= ptr->Area());
+
+	return false;
+!!!130555.cpp!!!	operator <=(in c : Shape) : bool
+	if(const Circle* ptr = dynamic_cast< const Circle*>(&c))
+		return(this->Area() <= ptr->Area());
+
+	return false;
+!!!130683.cpp!!!	staticCirArea(in c1 : Circle) : double
+	totalArea += areaCounter * c1.Area();
+	return totalArea;
+!!!130811.cpp!!!	staticCirPerimeter(in c1 : Circle) : double
+	totalPerimeter += perimeterCounter * c1.Perimeter();
+	return totalPerimeter;

@@ -1,0 +1,68 @@
+g++ __main.o Rectangle.o Triangle.o Circle.o ComposedShape.o -o exe
+./exe
+1. shape Height: 300 Width: 400 X: 0 Y: 0
+2. shape Height: 500 Width: 600 X: 0 Y: 0
+3. shape Height: 20 Width: 30 X: 0 Y: 0
+4. shape Height: 30 Width: 40 X: 0 Y: 0
+######################################################################
+1. shape Radius: 300 X: 300 Y: 300
+2. shape Radius: 500 X: 500 Y: 500
+3. shape Radius: 20 X: 20 Y: 20
+4. shape Radius: 25 X: 25 Y: 25
+######################################################################
+1. shape Edge: 500; COORDINATES x1: 250, y1: 0, x2: 0, y2: 433.013, x3: 500, y3: 433.013
+2. shape Edge: 300; COORDINATES x1: 150, y1: 0, x2: 0, y2: 259.808, x3: 300, y3: 259.808
+3. shape Edge: 35; COORDINATES x1: 17.5, y1: 0, x2: 0, y2: 30.3109, x3: 35, y3: 30.3109
+4. shape Edge: 28; COORDINATES x1: 14, y1: 0, x2: 0, y2: 24.2487, x3: 28, y3: 24.2487
+######################################################################
+I can fit at most 195 small shapes into the main container. The empty area (red) in container is 3000.
+
+I can fit at most 512 small shapes into the main container. The empty area (red) in container is 28414.4.
+
+I can fit at most 70 small shapes into the main container. The empty area (red) in container is 32038.
+
+I can fit at most 182 small shapes into the main container. The empty area (red) in container is -946.825.
+
+I can fit at most 306 small shapes into the main container. The empty area (red) in container is 4371.7.
+
+I can fit at most 30 small shapes into the main container. The empty area (red) in container is -58104.4.
+
+I can fit at most 289 small shapes into the main container. The empty area (red) in container is 109335.
+
+I don't write this function.
+
+I can fit at most 177 small shapes into the main container. The empty area (red) in container is 60316.8.
+
+1. shape Height: 300 Width: 400 X: 0 Y: 0
+2. shape Height: 500 Width: 600 X: 0 Y: 0
+3. shape Height: 20 Width: 30 X: 0 Y: 0
+4. shape Height: 30 Width: 40 X: 0 Y: 0
+######################################################################
+1. shape Radius: 300 X: 300 Y: 300
+2. shape Radius: 500 X: 500 Y: 500
+3. shape Radius: 20 X: 20 Y: 20
+4. shape Radius: 25 X: 25 Y: 25
+######################################################################
+1. shape Edge: 500; COORDINATES x1: 250, y1: 0, x2: 0, y2: 433.013, x3: 500, y3: 433.013
+2. shape Edge: 300; COORDINATES x1: 150, y1: 0, x2: 0, y2: 259.808, x3: 300, y3: 259.808
+3. shape Edge: 35; COORDINATES x1: 17.5, y1: 0, x2: 0, y2: 30.3109, x3: 35, y3: 30.3109
+4. shape Edge: 28; COORDINATES x1: 14, y1: 0, x2: 0, y2: 24.2487, x3: 28, y3: 24.2487
+######################################################################
+I can fit at most 195 small shapes into the main container. The empty area (red) in container is 3000.
+
+I can fit at most 512 small shapes into the main container. The empty area (red) in container is 28414.4.
+
+I can fit at most 70 small shapes into the main container. The empty area (red) in container is 32038.
+
+I can fit at most 182 small shapes into the main container. The empty area (red) in container is -946.825.
+
+I can fit at most 306 small shapes into the main container. The empty area (red) in container is 4371.7.
+
+I can fit at most 30 small shapes into the main container. The empty area (red) in container is -58104.4.
+
+I can fit at most 289 small shapes into the main container. The empty area (red) in container is 109335.
+
+I don't write this function.
+
+I can fit at most 177 small shapes into the main container. The empty area (red) in container is 60316.8.
+

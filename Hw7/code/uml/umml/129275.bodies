@@ -1,0 +1,17 @@
+class Point2D
+!!!136059.java!!!	Point2D()
+                        this.x = 0;
+                        this.y = 0;
+!!!136187.java!!!	Point2D(in xx : int, in yy : int)
+                        this.x = xx;
+                        this.y = yy;
+!!!136315.java!!!	getPoint2dX() : double
+ 
+                       return x;
+!!!136443.java!!!	getPoint2dY() : double
+ 
+                        return y; 
+!!!136571.java!!!	setPoint2dX(in xx : int) : void
+                       this. x = xx;
+!!!136699.java!!!	setPoint2dY(in yy : int) : void
+                       this. y = yy; 

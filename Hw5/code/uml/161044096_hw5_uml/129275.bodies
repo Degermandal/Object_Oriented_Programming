@@ -1,0 +1,112 @@
+class PolygonDyn
+!!!135675.cpp!!!	PolygonDyn()
+	dyn2D = new Point2D[cap];
+	use++;
+!!!135803.cpp!!!	PolygonDyn(in cap : int)
+	dyn2D = new Point2D[cap];
+	use++;
+!!!135931.cpp!!!	PolygonDyn(inout p2d : Polygon::Point2D)
+	dyn2D = new Point2D[cap];
+	dyn2D[use] = p2d;
+	use++;
+!!!136059.cpp!!!	PolygonDyn(inout p2d : Polygon::Point2D, inout pp2d : Polygon::Point2D, inout ppp2d : Polygon::Point2D)
+	dyn2D = new Point2D[cap];
+	dyn2D[use] = p2d;
+	use++;
+	dyn2D[use] = pp2d;
+	use++;
+	dyn2D[use] = ppp2d;
+	use++;
+!!!136187.cpp!!!	PolygonDyn(inout s : Shape)
+	if(const Circle* ptr = dynamic_cast< const Circle*>(s))
+	{
+		dyn2D = new Point2D[cap];
+		Point2D a2d(ptr->getShapeX(), ptr->getShapeY());	
+		PolygonDyn adyn(a2d);	
+		use++;
+	}
+	else if(const Rectangle* ptr = dynamic_cast< const Rectangle*>(s))
+	{
+		dyn2D = new Point2D[cap];
+		Point2D b2d(ptr->getShapeX(), ptr->getShapeY());	
+		PolygonDyn bdyn(b2d);
+		use++;	
+	}
+	else if(const Triangle* ptr = dynamic_cast< const Triangle*>(s))
+	{
+		dyn2D = new Point2D[cap];
+		Point2D c2d(ptr->getShapeX(), ptr->getShapeY());	
+		Point2D d2d(ptr->getX2(), ptr->getY2());	
+		Point2D f2d(ptr->getX3(), ptr->getY3());
+
+
+		PolygonDyn adyn(c2d,d2d,f2d);	
+		use++;
+	}
+	else
+		throw Exception("PolygonDyn Fail -PolygonDyn(Shape *s)-!!\n");
+!!!136571.cpp!!!	setUsed(in us : int) : void
+ 
+	if(us >= 0) 
+		use = us;
+	else 
+	{
+		throw Exception("used degiskeni 0 dan kucuk olamaz\n");
+	}
+!!!136699.cpp!!!	setCapacity(in cp : int) : void
+	if(cp >= 0) cap = cp;
+	else 
+		throw Exception("capacity degeri 0 dan kucuk olamaz\n");
+!!!136827.cpp!!!	~PolygonDyn()
+    delete [] dyn2D;
+!!!136955.cpp!!!	operator =(in rs : PolygonDyn) : PolygonDyn
+    if (cap != rs.cap)
+    {
+        delete [] dyn2D;
+        dyn2D = new Point2D[rs.cap];
+    }
+
+    cap = rs.cap;
+    use = rs.use;
+
+    for (int i = 0; i < use; i++)
+        dyn2D[i] = rs.dyn2D[i];
+
+    return *this;
+!!!137083.cpp!!!	PolygonDyn(in copy : PolygonDyn)
+    dyn2D = new Point2D[cap];
+    for (int i =0; i < use; i++)
+        dyn2D[i] = copy.dyn2D[i];
+!!!137723.cpp!!!	operator ==(in pd : Shape) : bool
+	try{
+		if(const PolygonDyn* ptr = dynamic_cast<const PolygonDyn*> (&pd))
+			return(this->dyn2D == ptr->dyn2D);
+		
+		return false;
+	}
+	catch(exception &e )
+	{
+		cout<<e.what()<<endl;
+	}
+
+!!!137851.cpp!!!	operator !=(in pd : Shape) : bool
+	try{
+		if(const PolygonDyn* ptr = dynamic_cast<const PolygonDyn*> (&pd))
+			return(this->dyn2D != ptr->dyn2D);
+		
+		return false;
+	}
+	catch(exception&e )
+	{
+		cout<<e.what()<<endl;
+	}
+
+!!!137979.cpp!!!	getAr() : Polygon::Point2D
+	Point2D *ar;
+	ar = new Point2D[getCapacity()];
+	for(int i = 0; i<getUsed(); i++)
+	{
+		ar[i] = dyn2D[i];
+
+	}
+	return *ar;

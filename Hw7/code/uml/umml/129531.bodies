@@ -1,0 +1,76 @@
+class PolygonVect
+!!!140283.java!!!	PolygonVect(inout rr : Rectangle)
+        Point2D pp = new Point2D(rr.getX(), rr.getY());
+        vec2D.add(pp);
+        pp = new Point2D(rr.getX()+ rr.getWidth(), rr.getY());
+        vec2D.add(pp);
+        pp = new Point2D(rr.getX()+ rr.getWidth(), rr.getY()+rr.getHeight());
+        vec2D.add(pp);
+        pp = new Point2D(rr.getX(), rr.getY()+rr.getHeight());
+        vec2D.add(pp);
+        
+        _perimeter = rr.perimeter();
+        _area = rr.area();
+!!!140411.java!!!	PolygonVect(inout tt : Triangle)
+        Point2D pp = new Point2D(tt.getX(), tt.getY());
+        vec2D.add(pp);
+        pp = new Point2D(tt.getxArr(0), tt.getyArr(0));
+        vec2D.add(pp);
+        pp = new Point2D(tt.getxArr(1), tt.getyArr(1));
+        vec2D.add(pp);
+        pp = new Point2D(tt.getxArr(2), tt.getyArr(2));
+        vec2D.add(pp);
+        
+        _perimeter = tt.perimeter();
+        _area = tt.area();
+!!!140539.java!!!	PolygonVect(inout cc : Circle)
+    double angle;
+
+	    for(int i = 0; i<100; ++i)
+	    {
+	            angle = i*(3.6)* Math.PI / 180;
+	            Point2D pp = new Point2D(cc.getX() + (int)(cc.getRadius() * Math.cos(angle)), cc.getY() + (int)( cc.getRadius() * Math.sin(angle)));
+	            
+	            vec2D.add(pp);
+	    }
+	    _perimeter = cc.perimeter();
+	    _area = cc.area();
+!!!140667.java!!!	PolygonVect(inout v2d : Polygon::Point2D)
+            vec2D.add(v2d);
+!!!140795.java!!!	PolygonVect(in xx : int, in yy : int)
+            Point2D pp = new Point2D(xx, yy);
+            vec2D.add(pp);
+!!!140923.java!!!	PolygonVect()
+            vec2D.add(new Point2D(0, 0));
+            vec2D.add(new Point2D(100, 50));
+            vec2D.add(new Point2D(50, 100));
+!!!141051.java!!!	getVec() : Polygon::Point2D
+           ar = null;
+
+            for(int i = 0; i<vec2D.size(); i++)
+            {
+                    ar.add (vec2D.get(i)) ;
+            }
+            return ar;
+!!!141179.java!!!	area() : double
+        return _area;
+!!!141307.java!!!	perimeter() : double
+        return _perimeter;
+!!!141435.java!!!	increment() : void
+        System.out.println("PolygonVect increment function");
+!!!141563.java!!!	decrement() : void
+        System.out.println("PolygonVect decrement function");
+!!!141691.java!!!	compareTo(inout sh : Shape) : int
+               if(area() == sh.area())
+                   return 0;
+               else if(area() < sh.area())
+                   return 1;
+               else
+                   return -1;
+        
+!!!141819.java!!!	draw(inout g : Graphics) : void
+            super.paintComponent(g);
+
+            g.setColor(Color.orange);
+
+             g.drawLine((int)vec2D.get(0).getPoint2dX(), (int)vec2D.get(0).getPoint2dY(), (int)vec2D.get(1).getPoint2dX(), (int)vec2D.get(1).getPoint2dY());

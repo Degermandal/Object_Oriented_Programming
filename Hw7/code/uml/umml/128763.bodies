@@ -1,0 +1,476 @@
+class ComposedShape
+!!!131323.java!!!	getArea() : double
+        return _area;
+!!!131451.java!!!	setArea(in _area : double) : void
+        this._area = _area;
+!!!131579.java!!!	getPerimeter() : double
+        return _perimeter;
+!!!131707.java!!!	setPerimeter(in _perimeter : double) : void
+        this._perimeter = _perimeter;
+!!!131835.java!!!	setCapacity(in capacity : int) : void
+        this.capacity = capacity;
+!!!131963.java!!!	setUsed(in used : int) : void
+        this.used = used;
+!!!132091.java!!!	getCapacity() : int
+        return capacity;
+!!!132219.java!!!	getUsed() : int
+        return used;
+!!!132347.java!!!	getRefShapeArr(in index : int) : Shape
+        return refShapeArr[index];
+!!!132475.java!!!	getMain_rec() : Rectangle
+        return main_rec;
+!!!132603.java!!!	getMySmallCon() : char
+        return mySmallCon;
+!!!132731.java!!!	getMyMainCon() : char
+        return myMainCon;
+!!!132859.java!!!	ComposedShape(inout rec : Rectangle, inout tri : Triangle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_rec = rec;// alinan parametreye gore privatemdaki objelere atiyorum
+        small_tri = tri;
+
+        myMainCon = 'R';//optimalFitte uygun fonksiyou cagirabilmek icin char atamasi yaptim
+        mySmallCon = 'T';
+
+!!!132987.java!!!	ComposedShape(inout rec : Rectangle, inout cir : Circle)
+        capacity = 1000;
+         used = 0;
+         refShapeArr = new Shape[capacity];
+        main_rec = rec;
+        small_cir = cir;
+
+        myMainCon = 'R';
+        mySmallCon = 'C';
+!!!133115.java!!!	ComposedShape(inout rec : Rectangle, inout rec2 : Rectangle)
+        capacity = 1000;
+        used = 0;
+
+        refShapeArr = new Shape[capacity];
+        main_rec = rec;
+        small_rec = rec2;
+
+        myMainCon = 'R';
+        mySmallCon = 'R';
+
+!!!133243.java!!!	ComposedShape(inout tri : Triangle, inout tri2 : Triangle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_tri = tri;
+        small_tri = tri2;
+
+        myMainCon = 'T';
+        mySmallCon = 'T';
+!!!133371.java!!!	ComposedShape(inout tri : Triangle, inout rec : Rectangle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_tri = tri;
+        small_rec = rec;
+
+        myMainCon = 'T';
+        mySmallCon = 'R';
+!!!133499.java!!!	ComposedShape(inout tri : Triangle, inout cir : Circle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_tri = tri;
+        small_cir = cir;
+
+        myMainCon = 'T';
+        mySmallCon = 'C';
+
+!!!133627.java!!!	ComposedShape(inout cir : Circle, inout tri : Triangle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_cir = cir;
+        small_tri = tri;
+
+        myMainCon = 'C';
+        mySmallCon = 'T';
+
+!!!133755.java!!!	ComposedShape(inout cir : Circle, inout rec : Rectangle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_cir = cir;
+        small_rec = rec;
+
+        myMainCon = 'C';
+        mySmallCon = 'R';
+
+!!!133883.java!!!	ComposedShape(inout cir : Circle, inout cir2 : Circle)
+        capacity = 1000;
+        used = 0;
+        refShapeArr = new Shape[capacity];
+        main_cir = cir;
+        small_cir = cir2;
+
+        myMainCon = 'C';
+        mySmallCon = 'C';
+!!!134011.java!!!	area() : double
+                       System.out.printf("%s%f%s\n", "ComposedShape area  ", _area, " .");
+                       return _area;
+!!!134139.java!!!	perimeter() : double
+                       System.out.printf("%s%f%s\n", "ComposedShape perimeter  ", _perimeter, " .");
+                       return _perimeter;
+!!!134267.java!!!	increment() : void
+                System.out.println("ComposedShape increment function");
+   
+!!!134395.java!!!	decrement() : void
+                      System.out.println("ComposedShape decrement function");
+!!!134523.java!!!	compareTo(inout sh : Shape) : int
+                       if(area() == sh.area())
+                           return 0;
+                       else if(area() < sh.area())
+                           return 1;
+                       else
+                           return -1;
+                
+!!!134651.java!!!	draw(inout g : Graphics) : void
+
+                for (Shape refShapeArr1 : refShapeArr) 
+                {
+                            Random rand = new Random();
+                            int color = rand.nextInt(9) + 1; //1-11 arasi sayi uretir
+                            if(color == 1)      g.setColor(Color.red);
+                            if(color == 2)      g.setColor(Color.green);
+                            if(color == 3)      g.setColor(Color.yellow);
+                            if(color == 4)      g.setColor(Color.black);
+                            if(color == 5)      g.setColor(Color.orange);
+                            if(color == 6)      g.setColor(Color.pink);
+                            if(color == 7)      g.setColor(Color.cyan);
+                            if(color == 8)      g.setColor(Color.blue);
+                            if(color == 9)      g.setColor(Color.gray);
+                            if(color == 10)      g.setColor(Color.magenta);
+
+                            refShapeArr1.draw(g);
+                            //System.out.println("vbn    "+ refShapeArr1.getClass());
+                }
+                        
+!!!134779.java!!!	optimalRec_Tri() : void
+            refShapeArr[used++] = main_rec;//arrayin 0. elemani hep buyuk sekil olsun istiyorum
+            
+            _area += main_rec.area();
+            _perimeter += main_rec.perimeter();
+ 
+            int x = 0;
+            int y = 0;           
+            int a = small_tri.getEdge()/2;
+
+            for(int i = (int)( a * Math.sqrt(2.0)) ; i<= main_rec.getHeight();  i+= (int) (a * Math.sqrt(3.0)))//yukseklik icin ilerlenmesi gereken kadar donuyor
+            {
+                        for(int j = (int)(1*small_tri.getEdge()) ; j<= main_rec.getWidth(); j+= small_tri.getEdge())//yana dogru kac tane ucgen cizilecegi
+                        {
+                                Shape ptr = new Triangle(small_tri.getEdge(),  x ,  y, x+a, y+a*(int)Math.sqrt(3), x+small_tri.getEdge(), y);		
+                                refShapeArr[used++] = ptr;
+                                //System.out.println("fgh   "+ small_tri.area());
+                                //System.out.println("dhj   "+ptr.getClass());
+                                _area += ptr.area();
+                                _perimeter += ptr.perimeter();
+                                //ters  ucgenlerim
+                                ptr = new Triangle(small_tri.getEdge(), x+small_tri.getEdge(), y, x+a, y+a*(int)Math.sqrt(3.0), x+small_tri.getEdge()+a, y+a*(int)Math.sqrt(3.0));
+                                refShapeArr[used++] = ptr;
+                                _area += ptr.area();
+                                _perimeter += ptr.perimeter();
+
+                                x += small_tri.getEdge();	
+                        }
+
+                        x =0;
+                        y+=a*(int)Math.sqrt(3.0);
+             }
+
+!!!134907.java!!!	optimalTri_Tri() : void
+    refShapeArr[used++] = main_tri; //arrayin 0. elemani hep buyuk sekil olsun istiyorum
+    _area += main_tri.area();
+     _perimeter += main_tri.perimeter();
+
+    int mainHalfEdge = main_tri.getEdge()/2;
+
+    int smallHalfEdge = small_tri.getEdge()/2;
+    int newDistance =  main_tri.getEdge(); //newdistance degiskenim benim alt cigimi tutuyor x koordinatinda ne kadar gidecegimi
+
+    int x = 0;
+    int  y = 0;
+    int count = 1;//dongu icin tuttun kac defa dondugunu buluyorum
+
+            while(newDistance > small_tri.getEdge())//newdistance kucuk ucgenin bir kenari oluncaya kadar (ne kadar yukari cikacagi)
+            {
+                    double numOfRec = newDistance/small_tri.getEdge();//kac tane yerlestirebiliyorum x koordinati boyunca
+
+                    for(int i = 1; i<numOfRec; i++)
+                    {
+                                    //duz kucuk ucgenlerimin koordinatlari
+                                    Shape  ptr = new Triangle(small_tri.getEdge(), x + smallHalfEdge, y +mainHalfEdge*(int)Math.sqrt(3.0)- smallHalfEdge*(int)Math.sqrt(3.0), x, y+mainHalfEdge*(int)Math.sqrt(3.0),
+                                                            x+small_tri.getEdge(), y+mainHalfEdge*(int)Math.sqrt(3.0));
+
+                                   refShapeArr[used++] = ptr;
+                                   _area += ptr.area();
+                                   _perimeter += ptr.perimeter();
+
+                                    ptr = new Triangle(small_tri.getEdge(), x+ smallHalfEdge, y +mainHalfEdge*(int)Math.sqrt(3.0)- smallHalfEdge*(int)Math.sqrt(3.0), 
+                                                    x+small_tri.getEdge(), y+mainHalfEdge*(int)Math.sqrt(3.0), x+small_tri.getEdge()+smallHalfEdge, y+mainHalfEdge*(int)Math.sqrt(3.0)- smallHalfEdge*(int)Math.sqrt(3.0));
+                                    refShapeArr[used++] = ptr;
+                                    _area += ptr.area();
+                                     _perimeter += ptr.perimeter();
+                                    x += small_tri.getEdge();//bu arttirma x koordinatinda ilerlememi sagliyor
+                    }
+
+                    x = 0;//x i tekrradan sifirliyorum
+                    x += count*smallHalfEdge;//her dongu kadar x koordinatinda ilerlemis olmam gerekiyor
+                    count++;//dongu icin arttirma
+
+                    newDistance -= small_tri.getEdge();//yukari dogru ilerledikce kucuk ucgenin kenari kadar azaliyor
+                    y -= smallHalfEdge*(int)Math.sqrt(3.0); //y koordinati her seferinde kucuk ucgenin kenar uzunlugunun yarisinin kok uc kati kadar azaliyor
+            }
+
+!!!135035.java!!!	optimalTri_Rec() : void
+    refShapeArr[used++] = main_tri; //arrayin 0. elemani hep buyuk sekil olsun istiyorum
+    _area += main_tri.area();
+     _perimeter += main_tri.perimeter();
+
+    int halfEdge = main_tri.getEdge()/2;
+
+    double newDistance = main_tri.getEdge() - (2.0/3 * (int)Math.sqrt(3.0)*small_rec.getHeight());//yukari cikildikta azalan alt kenar uzunlugu icin newdistance beliledim
+    int x = small_rec.getHeight()* (int)Math.sqrt(3.0) / 3;//ucgen ve dikdortgenime gore matematiksel x ve y belirledim
+    int y = halfEdge*(int)Math.sqrt(3.0) - small_rec.getHeight();
+    int count = 1;//dongu icin
+    
+    while(newDistance >= small_rec.getWidth())//en az dikdortgenin genisligi kadar olmali
+    {
+            double numOfRec = newDistance/small_rec.getWidth();//en alta kac tane dikdortgen gelecegi
+
+            for(int i = 0; i<numOfRec; i++)
+            {
+                    Shape ptr = new Rectangle(small_rec.getWidth(), small_rec.getHeight(), x, y);
+                      refShapeArr[used++] = ptr;
+                      _area += ptr.area();
+                        _perimeter += ptr.perimeter();
+
+                    x += small_rec.getWidth();
+            }
+
+            x = small_rec.getHeight()*(int)Math.sqrt(3.0) / 3 + (small_rec.getWidth()/3*count);//matematiksel olarak degisen degerler
+            newDistance -= (2.0/3*(int)Math.sqrt(3.0)*small_rec.getHeight());
+            y -= small_rec.getHeight();
+            count++;
+    }
+
+	
+!!!135163.java!!!	optimalTri_Cir() : void
+                       refShapeArr[used] = main_tri;//arrayin 0. elemani hep buyuk sekil olsun istiyorum
+                       used++;
+                       _area += main_tri.area();
+                        _perimeter += main_tri.perimeter();
+
+	int halfEdge = main_tri.getEdge()/2;
+	double sDiameter = 2*small_cir.getRadius();
+
+	double distance = main_tri.getEdge() / sDiameter;
+	int x = small_cir.getRadius()*(int)Math.sqrt(3.0);
+	int y = halfEdge*(int)Math.sqrt(3.0) - small_cir.getRadius();	
+
+	int count = 1;
+
+	while(main_tri.getEdge() >= sDiameter)
+	{
+		for(int i = 2; i<distance; i++)
+		{
+                                                        Shape ptr = new Circle(small_cir.getRadius(), x, y);
+                                                        refShapeArr[used] = ptr;
+                                                        used++;
+                                                        _area += ptr.area();
+                                                        _perimeter += ptr.perimeter();
+
+                                                        x += sDiameter;
+		}
+
+		int lvalue = main_tri.getEdge()*(8/10);
+
+		main_tri.setEdge(lvalue);
+		distance = main_tri.getEdge() / sDiameter;
+		x = small_cir.getRadius()*(int)Math.sqrt(3.0) +(int) (sDiameter/1.4)*count;
+		count++;
+		y -= sDiameter;
+	}
+!!!135291.java!!!	optimalCir_Cir() : void
+            refShapeArr[used] = main_cir;
+            used++;
+            _area += main_cir.area();
+            _perimeter += main_cir.perimeter();
+
+             int sDiameter = 2*small_cir.getRadius();
+             int Rr = main_cir.getRadius()/sDiameter;//kac tane cember sigar
+
+             int x = main_cir.getRadius() - (Rr*sDiameter) + small_cir.getRadius();//matematiksel koordinatlar
+             int y = main_cir.getRadius() - (Rr*sDiameter) + small_cir.getRadius();
+
+             for(int i = sDiameter; i<= (2*Rr*sDiameter); i+=sDiameter)//ilerleme mikarlari
+             {
+                     for(int j = sDiameter; j<=2*Rr*sDiameter; j+=sDiameter)
+                     {
+                             if((Math.pow(x - main_cir.getRadius(), 2) +Math. pow(y - main_cir.getRadius(), 2)) < Math.pow(main_cir.getRadius(), 2) )
+                             {
+                                     Shape ptr = new Circle(small_cir.getRadius(), x, y);
+                                    refShapeArr[used] = ptr;
+                                    used++;
+                                    _area += ptr.area();
+                                     _perimeter += ptr.perimeter();
+                             }
+                             x += sDiameter;
+                     }
+
+                     x = main_cir.getRadius() - (Rr*sDiameter)+small_cir.getRadius();
+                     y+=sDiameter;
+             }
+!!!135419.java!!!	optimalCir_Rec() : void
+            refShapeArr[used] = main_cir;//arrayin 0. elemani hep buyuk sekil olsun istiyorum
+            used++;
+            _area += main_cir.area();
+           _perimeter += main_cir.perimeter();
+
+            int diago = (int)Math.sqrt(Math.pow(small_rec.getWidth(),2) + Math.pow(small_rec.getHeight(),2)); //dikdorgenin kosegen uzunlugu
+
+            int Rr = main_cir.getRadius()/diago;//kosegene gore main cemberin yaricapina ne kadar dikdorgen sigacagi
+
+            int x = main_cir.getRadius() - (Rr*small_rec.getWidth());
+            int y = main_cir.getRadius() - (Rr*small_rec.getHeight());
+
+            for(int i = 0; i<= (2*Rr*small_rec.getHeight()); i+=small_rec.getHeight())
+            {
+                        for(int j = 0; j<= (2*Rr*small_rec.getWidth()); j+=small_rec.getWidth())
+                        {
+                                    Shape ptr = new Rectangle(small_rec.getWidth(), small_rec.getHeight(), x, y);
+                                    refShapeArr[used] = ptr;
+                                    used++;
+                                    _area += ptr.area();
+                                    _perimeter += ptr.perimeter();
+
+                            x += small_rec.getWidth();
+                        }
+
+            x = main_cir.getRadius() - (Rr*small_rec.getWidth());
+            y+=small_rec.getHeight();
+            }
+!!!135547.java!!!	optimalRec_Cir() : void
+    refShapeArr[used] = main_rec; //arrayin 0. elemani hep buyuk sekil olsun istiyorum
+     used++;
+     _area += main_rec.area();
+    _perimeter += main_rec.perimeter();
+
+    int x = small_cir.getRadius();
+    int y = small_cir.getRadius();
+    int bRadius = 2*small_cir.getRadius();
+
+
+    for(int i = bRadius; i<=main_rec.getHeight(); i+=bRadius)//mantigi asagi ve yana dogru ilerleme
+    {
+            for(int j = bRadius; j<= main_rec.getWidth(); j+= bRadius)
+            {
+                    Shape ptr = new Circle(small_cir.getRadius(), x, y);
+                    refShapeArr[used] = ptr;
+                     used++;
+                     _area += ptr.area();
+                        _perimeter += ptr.perimeter();
+
+                    x += bRadius;
+            }
+
+            x = small_cir.getRadius();
+            y+= bRadius;
+    }
+
+!!!135675.java!!!	optimalRec_Rec() : void
+    refShapeArr[used] = main_rec; //arrayin 0. elemani hep buyuk sekil olsun istiyorum
+     used++;
+     _area += main_rec.area();
+     _perimeter += main_rec.perimeter();
+
+    int x =0;
+    int y =0;
+
+    for(int i = small_rec.getHeight(); i<=main_rec.getHeight(); i+=small_rec.getHeight())
+    {
+            for(int j = small_rec.getWidth(); j<= main_rec.getWidth(); j+= small_rec.getWidth())
+            {
+                    Shape ptr = new Rectangle(small_rec.getWidth(), small_rec.getHeight(), x, y);
+
+                    refShapeArr[used] = ptr;
+                     used++;
+                     _area += ptr.area();
+                        _perimeter += ptr.perimeter();
+
+                    x += small_rec.getWidth();
+            }
+
+            x = 0;
+            y+= small_rec.getHeight();
+    }
+!!!135803.java!!!	optimalCir_Tri() : void
+            refShapeArr[used] = main_cir; //arrayin 0. elemani hep buyuk sekil olsun istiyorum
+             used++;
+             _area += main_cir.area();
+            _perimeter += main_cir.perimeter();
+
+    int x = (main_cir) .getRadius()/2;
+    int y = (main_cir) .getRadius()/2;
+
+    int a = small_tri.getEdge()/2;
+
+    for(int i = 0; i<= main_cir.getRadius(); i+=(a*(int)Math.sqrt(3.0)))//yukseklik icin ilerlenmesi gereken kadar donuyor
+    {
+            for(int j = 0; j<= main_cir.getRadius()*2; j+= small_tri.getEdge())//yana dogru kac tane ucgen cizilecegi
+            {			
+                    Shape ptr = new Triangle(small_tri.getEdge(), x, y, x+a, y+a*(int)Math.sqrt(3.0), x+small_tri.getEdge(), y);
+
+                    refShapeArr[used] = ptr;
+                    used++;
+                    _area += ptr.area();
+                        _perimeter += ptr.perimeter();
+
+                    ptr = new Triangle(small_tri.getEdge(), x+small_tri.getEdge(), y, x+a, y+a*(int)Math.sqrt(3.0), x+small_tri.getEdge()+a, y+a*(int)Math.sqrt(3.0));
+                    refShapeArr[used] = ptr;
+                    used++;
+                    _area += ptr.area();
+                        _perimeter += ptr.perimeter();
+
+                    x += small_tri.getEdge();
+            }
+
+            x =0;
+            y+=a*(int)Math.sqrt(3.0);
+    }
+!!!135931.java!!!	optimalFit() : void
+		    if(myMainCon == 'R' && mySmallCon == 'R')
+		            optimalRec_Rec();
+		
+		    else if(myMainCon == 'R' && mySmallCon == 'C')
+		            optimalRec_Cir();
+		
+		    else if(myMainCon == 'R' && mySmallCon == 'T')
+		            optimalRec_Tri();
+		
+		    else if(myMainCon == 'C' && mySmallCon == 'C')
+		            optimalCir_Cir();
+		
+		    else if(myMainCon == 'C' && mySmallCon == 'R')
+		            optimalCir_Rec();
+		
+		    else if(myMainCon == 'C' && mySmallCon == 'T')
+		            optimalCir_Tri();
+		
+		    else if(myMainCon == 'T' && mySmallCon == 'C')
+		            optimalTri_Cir();
+		
+		    else if(myMainCon == 'T' && mySmallCon == 'R')
+		            optimalTri_Rec();
+		
+		    else if(myMainCon == 'T' && mySmallCon == 'T')
+		            optimalTri_Tri();
+		
+		    else
+		            throw new Exception("ComposedShape Fail -optimalFit-!!");
+

@@ -1,0 +1,122 @@
+class Triangle
+!!!145659.cpp!!!	setEdge(in e : double) : void
+	if(e > 0.0)
+		edge = e;
+	else
+		cout<<"Incorrect edge input\n";
+!!!145787.cpp!!!	setX2(in x2 : double) : void
+	if(x2 >= 0.0)
+		cor_x2 = x2;
+	else
+		cout<<"Incorrect x input\n";
+!!!145915.cpp!!!	setY2(in y2 : double) : void
+	if(y2 >= 0.0)
+		cor_y2 = y2;
+	else
+		cout<<"Incorrect y input\n";
+!!!146043.cpp!!!	setX3(in x3 : double) : void
+	if(x3 >= 0.0)
+		cor_x3 = x3;
+	else
+		cout<<"Incorrect x input\n";
+!!!146171.cpp!!!	setY3(in y3 : double) : void
+	if(y3 >= 0.0)
+		cor_y3 = y3;
+	else
+		cout<<"Incorrect y input\n";
+!!!146299.cpp!!!	Perimeter() : double
+	return 3*edge;
+!!!146427.cpp!!!	Area() : double
+	return (edge*edge*sqrt(3)) / 4;
+!!!146555.cpp!!!	operator ++() : Triangle
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+	setX2(cor_x2 + 1.0);
+	setY2(cor_y2 + 1.0);
+	setX3(cor_x3 + 1.0);
+	setY3(cor_y3 + 1.0);
+
+	return *this;
+!!!146683.cpp!!!	operator --() : Triangle
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+	setX2(cor_x2 - 1.0);
+	setY2(cor_y2 - 1.0);
+	setX3(cor_x3 - 1.0);
+	setY3(cor_y3 - 1.0);
+
+	return *this;
+!!!146811.cpp!!!	operator ++(in  : int) : Triangle
+	Triangle &tt = *this;
+	setShapeX(getShapeX()+1.0);
+	setShapeY(getShapeY()+1.0);
+	setX2(cor_x2 + 1.0);
+	setY2(cor_y2 + 1.0);
+	setX3(cor_x3 + 1.0);
+	setY3(cor_y3 + 1.0);
+
+	return tt;
+!!!146939.cpp!!!	operator --(in  : int) : Triangle
+	Triangle &tt = *this;
+	setShapeX(getShapeX()-1.0);
+	setShapeY(getShapeY()-1.0);
+	setX2(cor_x2 - 1.0);
+	setY2(cor_y2 - 1.0);
+	setX3(cor_x3 - 1.0);
+	setY3(cor_y3 - 1.0);
+
+	return tt;
+!!!147067.cpp!!!	operator +(in plusSize : double) : Triangle
+	return Triangle(edge + plusSize);
+!!!147195.cpp!!!	operator -(in minusSize : double) : Triangle
+	return Triangle(edge - minusSize);
+!!!147323.cpp!!!	operator ==(in t : Shape) : bool
+try{//bad_cast exception area icin
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() == ptr->Area());
+	
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!147451.cpp!!!	operator !=(in t : Shape) : bool
+try{
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() != ptr->Area());
+	
+	return false;
+}
+catch(exception&e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!147579.cpp!!!	operator >(in t : Shape) : bool
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() > ptr->Area());
+	
+	return false;
+!!!147707.cpp!!!	operator <(in t : Shape) : bool
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() < ptr->Area());
+	
+	return false;
+!!!147835.cpp!!!	operator >=(in t : Shape) : bool
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() >= ptr->Area());
+	
+	return false;
+!!!147963.cpp!!!	operator <=(in t : Shape) : bool
+	if(const Triangle* ptr = dynamic_cast<const Triangle*> (&t))
+		return(this->Area() <= ptr->Area());
+	
+	return false;
+!!!148091.cpp!!!	staticTriArea(in t1 : Triangle) : double
+	totalArea += areaCounter * t1.Area();
+	return totalArea;
+!!!148219.cpp!!!	staticTriPerimeter(in t1 : Triangle) : double
+	totalPerimeter += perimeterCounter * t1.Perimeter();
+	return totalPerimeter;

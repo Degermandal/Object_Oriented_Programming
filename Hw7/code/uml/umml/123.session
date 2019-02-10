@@ -1,0 +1,8 @@
+window_sizes 1800 892 450 1343 655 168
+
+show_stereotypes
+selected classdiagram_ref 128123 // deger
+open
+  class_ref 128507 // Shape
+end
+end

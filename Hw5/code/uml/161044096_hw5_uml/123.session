@@ -1,0 +1,12 @@
+window_sizes 1800 892 450 1343 662 168
+
+diagrams
+  active  classdiagram_ref 128123 // uml
+    1074 524 100 C 0 0
+end
+show_stereotypes
+selected class_ref 129403 // PolygonVect
+open
+  classview_ref 128123 // 161044096_CSE241_HW5
+end
+end

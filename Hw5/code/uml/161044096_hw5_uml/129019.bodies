@@ -1,0 +1,25 @@
+class Polygon
+!!!135419.cpp!!!	operator ==(in p : Shape) : bool
+try{
+	if(const Polygon* ptr = dynamic_cast<const Polygon*> (&p))
+		return(this->Area() == ptr->Area());
+	
+	return false;
+}
+catch(exception &e )
+{
+	cout<<e.what()<<endl;
+}
+
+!!!135547.cpp!!!	operator !=(in p : Shape) : bool
+try{
+	if(const Polygon* ptr = dynamic_cast<const Polygon*> (&p))
+		return(this->Area() != ptr->Area());
+	
+	return false;
+}
+catch(exception &e )
+{
+	cout<<e.what()<<endl;
+}
+
